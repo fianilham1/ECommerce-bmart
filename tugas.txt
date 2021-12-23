@@ -1,0 +1,12 @@
+
+1. Create endpoint to search item data
+2. Create endpoint to get item data
+3. Create endpoint to manipulate cart
+4. Create Login/register page
+5. Create page to show list item
+6. Create page to show cart item
+7. Create page to show detail item
+
+Optional
+1. Use spring cloud security
+2. Integrate Login/register with google
