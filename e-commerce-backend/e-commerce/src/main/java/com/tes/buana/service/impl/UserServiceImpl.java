@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -104,7 +105,9 @@ public class UserServiceImpl implements UserService {
             usersRepository.save(existingUsers.get());
             return existingUsers.get();
         }else{
-            users.setPassword("google");
+            String randomGooglePassword = UUID.randomUUID().toString();
+            String encryptedPassword = hashSaltPasswordUtil.generateStrongPasswordHash(randomGooglePassword);
+            users.setPassword(encryptedPassword);
             usersRepository.save(users);
             cartRepository.save(Cart.builder().users(users).build());
             return users;
