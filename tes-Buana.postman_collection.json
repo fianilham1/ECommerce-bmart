@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "c6464678-c291-42f7-93a3-a8c434c076f7",
+		"name": "tes-Buana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[ROLE] add-list-role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roles\":[\r\n        {\r\n            \"name\":\"admin\"\r\n        },\r\n        {\r\n            \"name\":\"customer\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/role",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[ROLE] get-list-role",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/role",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[AUTH] register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\"  : \"fian1@gmail.com\",\r\n    \"password\"  : \"Fian123@\",\r\n    \"name\"      : \"Fian Ilham\",\r\n    \"roleId\"    : \"55c5595f-5411-44a3-baa6-bdd6a524a1ce\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[AUTH] login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\"  : \"tomholland1@gmail.com\",\r\n    \"password\"  : \"Tomh123@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/signin",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[AUTH] forgot-password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/auth/forgot-password?username=fian1@gmail.com",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"forgot-password"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "fian1@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[AUTH] reset-password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"Fian222@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/reset-password",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[CATEGORY] add-list-product-category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"productCategories\":[\r\n            {\r\n                \"name\":\"food_snack\"\r\n            },\r\n            {\r\n                \"name\":\"drink\"\r\n            },\r\n            {\r\n                \"name\":\"electronic\"\r\n            },\r\n            {\r\n                \"name\":\"household_appliance\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/product-category",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[CATEGORY] get-list-product-category",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"productCategories\":[\r\n            {\r\n                \"name\":\"food/snack\"\r\n            },\r\n            {\r\n                \"name\":\"drink\"\r\n            },\r\n            {\r\n                \"name\":\"electronic\"\r\n            },\r\n            {\r\n                \"name\":\"household_appliance\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/product-category",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] add-list-product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"productList\":[\r\n        {\r\n            \"name\"   :\"kapal_api_special\",\r\n            \"brand\"  :\"kapal_api\",\r\n            \"quantityInStock\"  :100,\r\n            \"code\"   :\"KA124GHY\",\r\n            \"netWeight\" :165,\r\n            \"price\"  :14000,\r\n            \"image\":\"https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-3977995/kapal-api_kapal-api-kopi-special--165-g-_full03.jpg\",\r\n            \"expDate\"   :\"2022-04-23\",\r\n            \"productCategory\" :{\r\n                \"id\":\"83ba1c2c-d8e9-45ff-98a9-30fece7d3828\"\r\n            }\r\n        },\r\n        {\r\n            \"name\"   :\"power_fan_maspion\",\r\n            \"brand\"  :\"Maspion\",\r\n            \"quantityInStock\"  :35,\r\n            \"code\"   :\"MAT67Y0P\",\r\n            \"productSeries\"    :\"PW2001RC\",\r\n            \"size\"  :\"blade(20inch)\",\r\n            \"netWeight\" :9000,\r\n            \"price\"  :650000,\r\n            \"image\":\"https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/maspion_maspion-power-fan-pw-500s-hitam_full02.jpg\",\r\n            \"productCategory\" :{\r\n                \"id\":\"a3ff6be3-a1a8-49ca-92f5-c0f23a84a0ba\"\r\n            }\r\n        },\r\n        {\r\n            \"name\"   :\"coca_cola_zero\",\r\n            \"brand\"  :\"Coca_Cola\",\r\n            \"quantityInStock\"  :82,\r\n            \"code\"   :\"CCCY445GH\",\r\n            \"size\"  :\"330ml\",\r\n            \"netWeight\" :480,\r\n            \"price\"  :7000,\r\n            \"expDate\"   :\"2022-08-11\",\r\n            \"image\":\"https://cemilku.com/wp-content/uploads/2016/09/coca-cola-zero1.jpg\",\r\n            \"productCategory\" :{\r\n                \"id\":\"ab062c28-694f-472f-8c24-becb4a0d3894\"\r\n            }\r\n        },\r\n        {\r\n            \"name\"   :\"big_cans_oreo_selection_biscuit\",\r\n            \"brand\"  :\"Oreo\",\r\n            \"quantityInStock\"  :50,\r\n            \"code\"   :\"RRP1352VB\",\r\n            \"netWeight\" :313,\r\n            \"price\"  :38500,\r\n            \"expDate\"   :\"2023-01-10\",\r\n            \"image\":\"https://cf.shopee.co.id/file/01321c564bd09c84e1de13e3b6e7bbe6\",\r\n            \"productCategory\" :{\r\n                \"id\":\"83ba1c2c-d8e9-45ff-98a9-30fece7d3828\"\r\n            }\r\n        },\r\n        {\r\n            \"name\"   :\"pan\",\r\n            \"brand\"  :\"OUMBÄRLIG\",\r\n            \"quantityInStock\"  :76,\r\n            \"code\"   :\"KOP25109H\",\r\n            \"size\"   :\"height(15cm),diameter(23cm)\",\r\n            \"netWeight\" :1230,\r\n            \"price\"  :399000,\r\n            \"image\":\"https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/128/0712829_PE729092_S5.jpg\",\r\n            \"productCategory\" :{\r\n                \"id\":\"bebd049a-2511-4903-b70b-b6a3dd16870d\"\r\n            }\r\n        }\r\n    ]\r\n }\r\n \r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] update-product-img-by-id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"70271da6-295c-4a7e-8715-1e7f174f05e7\",\r\n    \"image\":\"https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/128/0712829_PE729092_S5.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/image",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] get-list-product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products?category=&searchKeyword=&sort_by=rating",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": ""
+						},
+						{
+							"key": "searchKeyword",
+							"value": ""
+						},
+						{
+							"key": "sort_by",
+							"value": "rating"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] get-product-by-id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/f2f196c9-69d1-490a-88ad-9c58c60ad2ca",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"f2f196c9-69d1-490a-88ad-9c58c60ad2ca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] delete-product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/e62ac943-a986-4824-aa27-5ead4de0e82b",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"e62ac943-a986-4824-aa27-5ead4de0e82b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[REVIEW] add-product-review",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \"productId\":\"c48b71e9-70c5-4a48-a91e-b0642d08dca3\",\r\n   \"rating\":4,\r\n   \"comment\":\"Good Coffee\"\r\n }\r\n \r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/review",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[CART] add-cart-item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"product\":{\r\n         \"id\":\"f2f196c9-69d1-490a-88ad-9c58c60ad2ca\"\r\n     },\r\n     \"productQuantity\":2\r\n }\r\n \r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cart",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[CART] delete-cart-item",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cart/c48b71e9-70c5-4a48-a91e-b0642d08dca3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cart",
+						"c48b71e9-70c5-4a48-a91e-b0642d08dca3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[CART] get-cart-item",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cart",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
