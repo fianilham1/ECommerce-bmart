@@ -10,10 +10,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Lottie from 'react-lottie';
 import animationLoadingData from '../lotties/loading-dots-blue.json';
+import { ShowAddProductToCartSuccess, ShowAddProductReviewSuccess } from '../components/Alert'
 
 function ProductScreen(props) {
   const [qty, setQty] = useState(1);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [comment, setComment] = useState('');
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -25,7 +26,7 @@ function ProductScreen(props) {
 
   useEffect(() => {
     if (productSaveSuccess) {
-      alert('Review submitted successfully.');
+      ShowAddProductReviewSuccess();
       setRating(0);
       setComment('');
       dispatch({ type: PRODUCT_REVIEW_SAVE_RESET });
@@ -41,7 +42,7 @@ function ProductScreen(props) {
     dispatch(
       saveProductReview({
         productId: props.match.params.id,
-        username: userInfo.name,
+        userName: userInfo.name,
         rating: rating,
         comment: comment,
       })
@@ -51,12 +52,7 @@ function ProductScreen(props) {
     if(!userInfo) return props.history.push('/signin?redirect=')
     if (props.match.params.id) {
       dispatch(addToCart(props.match.params.id, qty, "addQty"));
-      Swal.fire({
-        icon: 'success',
-        title: 'The Product has been added to Your Cart',
-        showConfirmButton: false,
-        timer: 1500
-      })
+      ShowAddProductToCartSuccess();
     }
   };
 
@@ -82,6 +78,9 @@ function ProductScreen(props) {
           options={defaultLoadingOptions}
           height={200}
           width={200}
+          style={{
+            marginBottom: '50%'
+          }}
         />
       ) : error ? (
         <div>{error} </div>
@@ -169,7 +168,7 @@ function ProductScreen(props) {
                       review.image!=null?
                         <img
                           src={review.image}
-                          alt="review-image-user"
+                          alt="review-img-user"
                         />
                       :
                         <div>

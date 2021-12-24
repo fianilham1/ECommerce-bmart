@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signin } from '../actions/userActions';
+import { signin, googlesignin } from '../actions/userActions';
+import { GoogleLogin } from 'react-google-login';
+import { CLIENT_ID } from '../constants/client';
 
 
 function SigninScreen(props) {
@@ -24,7 +26,13 @@ function SigninScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(username, password));
-
+  }
+  const responseGoogleSuccess = (response) => {
+    console.log("success token ",response.tokenId);
+    dispatch(googlesignin(response.tokenId));
+  }
+  const responseGoogleFailure = (response) => {
+    console.log("failed ",response);
   }
   return <div className="form">
     <form onSubmit={submitHandler} >
@@ -56,6 +64,22 @@ function SigninScreen(props) {
         </li>
         <li>
           <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your bmart account</Link>
+        </li>
+        <li>
+        <GoogleLogin
+          clientId={CLIENT_ID}
+          render={renderProps => (
+          <button className="google-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+            <div className="google-icon-wrapper">
+              <img alt="google" className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+            </div>
+            <p className="btn-text"><b>Sign in with google</b></p>
+          </button>
+          )}
+          onSuccess={responseGoogleSuccess}
+          onFailure={responseGoogleFailure}
+          cookiePolicy={'single_host_origin'}
+        />
         </li>
       </ul>
     </form>

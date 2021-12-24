@@ -8,7 +8,9 @@ import {
   productDeleteReducer,
   productReviewSaveReducer,
 } from './reducers/productReducers';
+import { productCategoryListReducer } from './reducers/productCategoryReducers';
 import { cartReducer } from './reducers/cartReducers';
+import { roleListReducer } from './reducers/roleReducers';
 import {
   userSigninReducer,
   userRegisterReducer,
@@ -21,10 +23,13 @@ const userInfo = Cookie.getJSON('userInfo') || null;
 const initialState = {
   cart: { cartItemsList: [], totalProducts: 0, totalProductsPrice: 0 },
   userSignin: { userInfo },
+  productCategory: { productCategoryList:[] },
+  role: { roleList:[] }
 };
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  productCategory: productCategoryListReducer,
   cart: cartReducer,
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
@@ -32,6 +37,7 @@ const reducer = combineReducers({
   productDelete: productDeleteReducer,
   productReviewSave: productReviewSaveReducer,
   userUpdate: userUpdateReducer,
+  role: roleListReducer
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

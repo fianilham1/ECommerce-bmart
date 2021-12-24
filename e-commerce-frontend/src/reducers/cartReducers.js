@@ -1,5 +1,6 @@
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_GET_ITEM,
-  CART_ADD_ITEM_FAIL, CART_REMOVE_ITEM_FAIL, CART_GET_ITEM_FAIL } from "../constants/cartConstants";
+  CART_ADD_ITEM_FAIL, CART_REMOVE_ITEM_FAIL, CART_GET_ITEM_FAIL,
+  EMPTY_CART_ITEM } from "../constants/cartConstants";
 
 function cartReducer(state = { cartItemsList: [], totalProducts: 0, totalProductsPrice: 0 }, action) {
   switch (action.type) {
@@ -21,6 +22,8 @@ function cartReducer(state = { cartItemsList: [], totalProducts: 0, totalProduct
       return { error: action.payload };
     case CART_GET_ITEM_FAIL:
       return { error: action.payload };
+    case EMPTY_CART_ITEM:
+      return { cartItemsList: [], totalProducts: 0, totalProductsPrice: 0 };
     default:
       return state
   }
