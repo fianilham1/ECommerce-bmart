@@ -7,8 +7,8 @@
 # DB_USERNAME=<postgre_username>
 # DB_PASSWORD=<postgre_password>
 # SWAGGER_HOST=localhost:8383
-# Set <DB_name> , <postgre_username>, <postgre_password> as your own config
+# Set <DB_name> , <postgre_username>, <postgre_password>, and PORT as your own config
 
 # 3. start ECommerceApplication
 
-#ThankYou...
+# ThankYou...
