@@ -3,9 +3,9 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_GET_ITEM,
   CART_ADD_ITEM_FAIL, CART_REMOVE_ITEM_FAIL, CART_GET_ITEM_FAIL,
   EMPTY_CART_ITEM } from "../constants/cartConstants";
 import { BASE_URL } from "../constants/api";
-import Cookie from 'js-cookie';
 import { ShowSessionOut } from "../components/SessionAlert";
-
+import { logout } from "../actions/userActions";
+ 
 const addToCart = (productId, qty, options) => async (dispatch, getState) => {
   const { userSignin: { userInfo } } = getState();
   try {
@@ -48,8 +48,8 @@ const addToCart = (productId, qty, options) => async (dispatch, getState) => {
 
   } catch (error) {
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: CART_ADD_ITEM_FAIL, payload: error.message });
   }
@@ -71,8 +71,8 @@ const removeFromCart = (productId) => async (dispatch, getState) => {
 
   }catch (error){
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: CART_REMOVE_ITEM_FAIL, payload: error.message });
   }
@@ -95,8 +95,8 @@ const getCart = () => async (dispatch, getState) => {
 
   }catch (error){
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: CART_GET_ITEM_FAIL, payload: error.message });
   }

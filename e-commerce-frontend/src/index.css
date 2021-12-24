@@ -443,6 +443,7 @@ a > .rating > span:last-child {
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-bottom: 19rem;
 }
 .form-container {
   display: flex;

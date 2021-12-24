@@ -17,8 +17,8 @@ import {
 } from '../constants/productConstants';
 import Axios from 'axios';
 import { BASE_URL } from "../constants/api";
-import Cookie from 'js-cookie';
 import { ShowSessionOut } from "../components/SessionAlert";
+import { logout } from "../actions/userActions";
 
 const listProducts = (
   category = '',
@@ -48,10 +48,6 @@ const listProducts = (
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: productList });
     }, 500);
   } catch (error) {
-    if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
-    };
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }
 };
@@ -91,8 +87,8 @@ const saveProduct = (product) => async (dispatch, getState) => {
     }
   } catch (error) {
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: PRODUCT_SAVE_FAIL, payload: error.message });
   }
@@ -108,10 +104,6 @@ const detailsProduct = (productId) => async (dispatch) => {
       dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: detailsProduct });
     }, 500);
   } catch (error) {
-    if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
-    };
     dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
   }
 };
@@ -132,8 +124,8 @@ const deleteProdcut = (productId) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_DELETE_SUCCESS, payload: deleteMessage, success: true });
   } catch (error) {
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: PRODUCT_DELETE_FAIL, payload: error.message });
   }
@@ -163,8 +155,8 @@ const saveProductReview = (review) => async (dispatch, getState) => {
   } catch (error) {
     // report error
     if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
+      dispatch(logout());
+      ShowSessionOut();
     };
     dispatch({ type: PRODUCT_REVIEW_SAVE_FAIL, payload: error.message });
   }

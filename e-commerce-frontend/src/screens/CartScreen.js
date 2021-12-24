@@ -19,8 +19,8 @@ function CartScreen() {
     dispatch(removeFromCart(productId));
   }
   useEffect(() => {
-    
-  }, [cartItemsList]);
+    console.log("RERENDER->userinfo",userInfo)
+  }, [cartItemsList,userInfo]);
 
   const checkoutHandler = () => {
     Swal.fire({

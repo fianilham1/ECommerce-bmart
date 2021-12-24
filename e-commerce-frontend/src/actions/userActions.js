@@ -28,7 +28,8 @@ const update = ({ userId, name, password, mobilePhone, image }) => async (dispat
   } catch (error) {
     if(error.response.status===401) {
       ShowSessionOut()
-      Cookie.remove("userInfo")
+      Cookie.remove("userInfo");
+      dispatch({ type: USER_LOGOUT })
     };
     dispatch({ type: USER_UPDATE_FAIL, payload: error.message });
   }

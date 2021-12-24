@@ -59,7 +59,7 @@ function ProductsScreen() {
     return () => {
       //
     };
-  }, [successSave, successDelete]);
+  }, [successSave, successDelete, userInfo]);
 
   const openModal = (product) => {
     console.log("category clicked :",category)

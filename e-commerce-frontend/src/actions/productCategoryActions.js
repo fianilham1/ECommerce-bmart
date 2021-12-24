@@ -5,8 +5,6 @@ import {
 } from '../constants/productCategoryConstants';
 import Axios from 'axios';
 import { BASE_URL } from "../constants/api";
-import Cookie from 'js-cookie';
-import { ShowSessionOut } from "../components/SessionAlert";
 
 const listProductCategory = (
   searchKeyword = '',
@@ -27,10 +25,6 @@ const listProductCategory = (
       dispatch({ type: PRODUCT_CATEGORY_LIST_SUCCESS, payload: productCategoryList });
     }, 500);
   } catch (error) {
-    if(error.response.status===401) {
-      ShowSessionOut()
-      Cookie.remove("userInfo")
-    };
     dispatch({ type: PRODUCT_CATEGORY_LIST_FAIL, payload: error.message });
   }
 };

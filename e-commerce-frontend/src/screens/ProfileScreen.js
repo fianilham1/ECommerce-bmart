@@ -65,7 +65,7 @@ function ProfileScreen(props) {
                 Name
           </label>
               <input value={name} type="name" name="name" id="name" onChange={(e) => {
-                if(userInfo.type==="regular") setName(e.target.value)
+                if(userInfo?.type==="regular") setName(e.target.value)
               }}>
               </input>
             </li>
@@ -73,13 +73,13 @@ function ProfileScreen(props) {
               <label htmlFor="email">
                 Username
             </label>
-              <input readOnly value={userInfo.username} type="email" name="email" id="email" >
+              <input readOnly value={userInfo?.username || ''} type="email" name="email" id="email" >
               </input>
             </li>
             <li>
               <label htmlFor="password">Password</label>
               <input required value={password} type="password" id="password" name="password" onChange={(e) => {
-                if(userInfo.type==="regular") setPassword(e.target.value)
+                if(userInfo?.type==="regular") setPassword(e.target.value)
                 }}>
               </input>
             </li>
@@ -88,7 +88,7 @@ function ProfileScreen(props) {
                 Mobile Phone
               </label>
               <input type="text" value={mobilePhone} name="phone" id="phone" onChange={(e) => {
-                if(userInfo.type==="regular") setMobilePhone(e.target.value)
+                if(userInfo?.type==="regular") setMobilePhone(e.target.value)
                 }}>
               </input>
             </li>
@@ -97,12 +97,12 @@ function ProfileScreen(props) {
                 Image
               </label>
               <input type="text" value={image} name="image" id="image" onChange={(e) => {
-                if(userInfo.type==="regular") setImage(e.target.value)
+                if(userInfo?.type==="regular") setImage(e.target.value)
                 }}>
               </input>
             </li>
             <li>
-              <button disabled={userInfo.type==="regular"?false:true} type="submit" className="button primary">Update</button>
+              <button disabled={userInfo?.type==="regular"?false:true} type="submit" className="button primary">Update</button>
             </li>
             <li>
               {
